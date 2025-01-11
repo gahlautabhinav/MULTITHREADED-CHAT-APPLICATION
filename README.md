@@ -21,12 +21,6 @@ This multithreaded chat application, built using Java sockets, enables real-time
 - client (Directory containing Client build)
 - How-to-run.txt (Text file having steps to run this application)
 
-**TOOLS/TECH. USED:**
-- **Java**: The core programming language used for both the client and server applications.
-- **Java Sockets**: For establishing network connections and facilitating communication between clients and the server.
-- **Java Swing**: For creating the graphical user interface, providing a user-friendly experience.
-- **Multithreading**: To manage multiple client connections concurrently, ensuring smooth operation.
-
 **KEY FEATURES:**
 - **Real-Time Messaging**: Experience instant communication as users can send and receive messages in real-time, fostering dynamic interactions.
 - **Concurrent User Support**: The server is capable of handling multiple client connections simultaneously through multithreading, ensuring that all users can communicate without delays.
@@ -34,3 +28,9 @@ This multithreaded chat application, built using Java sockets, enables real-time
 - **Intuitive Graphical User Interface (GUI)**: Built with Java Swing, the user interface is designed to be simple yet effective, allowing users to focus on their conversations without distractions. The layout is clean, and the functionality is straightforward.
 - **Message Broadcasting**: Messages sent by any user are broadcasted to all connected clients, ensuring that everyone in the chat room stays informed and engaged.
 - **Basic Message Encryption**: To add a layer of security, messages are encrypted (by reversing the string) before transmission. While this is a simple form of encryption, it serves as a foundation for implementing more robust security measures in the future.
+
+**TOOLS/TECH. USED:**
+- **Java**: The core programming language used for both the client and server applications.
+- **Java Sockets**: For establishing network connections and facilitating communication between clients and the server.
+- **Java Swing**: For creating the graphical user interface, providing a user-friendly experience.
+- **Multithreading**: To manage multiple client connections concurrently, ensuring smooth operation.
