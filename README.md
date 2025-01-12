@@ -34,3 +34,5 @@ This multithreaded chat application, built using Java sockets, enables real-time
 - **Java Sockets**: For establishing network connections and facilitating communication between clients and the server.
 - **Java Swing**: For creating the graphical user interface, providing a user-friendly experience.
 - **Multithreading**: To manage multiple client connections concurrently, ensuring smooth operation.
+
+**INSTALLATION AND USAGE:**
