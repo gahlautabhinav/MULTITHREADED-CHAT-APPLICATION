@@ -36,3 +36,17 @@ This multithreaded chat application, built using Java sockets, enables real-time
 - **Multithreading**: To manage multiple client connections concurrently, ensuring smooth operation.
 
 **INSTALLATION AND USAGE:**
+1. Prerequisites:
+   - JDK (Java Development Kit)
+   - Maven Build Tool
+
+2. Clone the repo:
+   - git clone https://github.com/yourusername/MULTITHREADED-CHAT-APPLICATION.git
+
+3. Install both projects:
+   - mvn clean install
+
+4. Run the Server:
+   - mvn exec:java
+
+5. 
