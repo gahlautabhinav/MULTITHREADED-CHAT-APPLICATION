@@ -19,7 +19,6 @@ This multithreaded chat application, built using Java sockets, enables real-time
 **FILES INCLUDED IN REPO:**
 - server (Directory containing Server build)
 - client (Directory containing Client build)
-- How-to-run.txt (Text file having steps to run this application)
 
 **KEY FEATURES:**
 - **Real-Time Messaging**: Experience instant communication as users can send and receive messages in real-time, fostering dynamic interactions.
