@@ -47,6 +47,9 @@ This multithreaded chat application, built using Java sockets, enables real-time
    - mvn clean install
 
 4. Run the Server:
+   - cd server
    - mvn exec:java
 
-5. 
+5. Run multiple Clients:
+   - cd client
+   - mvn exec:java
