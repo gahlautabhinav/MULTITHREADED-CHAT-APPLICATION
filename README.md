@@ -52,3 +52,6 @@ This multithreaded chat application, built using Java sockets, enables real-time
 5. Run multiple Clients:
    - cd client
    - mvn exec:java
+
+# **OUTPUT**
+![Screenshot 2025-01-14 163101](https://github.com/user-attachments/assets/5e6568ea-d659-42c9-aa61-dc0cadd2b318)
