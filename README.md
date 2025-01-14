@@ -55,3 +55,5 @@ This multithreaded chat application, built using Java sockets, enables real-time
 
 # **OUTPUT**
 ![Screenshot 2025-01-14 163101](https://github.com/user-attachments/assets/5e6568ea-d659-42c9-aa61-dc0cadd2b318)
+
+![Screenshot 2025-01-14 163151](https://github.com/user-attachments/assets/1709bea0-1772-400f-8a35-91cf79a0e6cc)
