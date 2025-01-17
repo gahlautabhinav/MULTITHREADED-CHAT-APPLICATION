@@ -1,0 +1,12 @@
+Jan 14, 2025 4:30:39 PM com.server.Server run
+INFO: Received: Hi
+Jan 14, 2025 4:30:48 PM com.server.Server run
+INFO: Received: Hello
+Jan 14, 2025 4:31:13 PM com.server.Server run
+INFO: Received: Game
+Jan 15, 2025 9:40:57 AM com.server.Server run
+INFO: Received: Hi
+Jan 15, 2025 9:41:02 AM com.server.Server run
+INFO: Received: hello
+Jan 15, 2025 9:42:26 AM com.server.Server run
+INFO: Received: Hello
