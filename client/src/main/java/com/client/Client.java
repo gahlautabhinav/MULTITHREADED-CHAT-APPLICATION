@@ -52,20 +52,32 @@ public class Client implements ActionListener, Runnable {
     // Logger for logging events and errors
     private static final Logger logger = Logger.getLogger(Client.class.getName());
 
+    /**
+    * Constructs a new Client instance and initializes the user interface.
+    * Prompts the user for a username and connects to the chat server.
+    */
     Client() {
+        // Prompt user for username
         username = JOptionPane.showInputDialog("Enter your username: ");
         if (username == null || username.trim().isEmpty()) {
-            username = "Anonymous";
+            username = "Anonymous"; // Default username if input is empty
         } else if (!isValidUsername(username)) {
+            // Validate username
             JOptionPane.showMessageDialog(f, "Invalid username. Please use alphanumeric characters only.", "Error", JOptionPane.ERROR_MESSAGE);
-            System.exit(1);
+            System.exit(1); // Exit if username is invalid
         }
 
-        f.setLayout(null);
-        setupUI();
-        connectToServer();
+        f.setLayout(null); // Set layout to null for absolute positioning 
+        setupUI(); // Setup the user interface
+        connectToServer(); // Connect to the char server
     }
 
+    /**
+    * Validates the username to ensure it contains only alphanumeric characters and underscores.
+    *
+    * @param username the username to validate
+    * @return true if the username is valid, false otherwise
+    */
     private boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
     }
