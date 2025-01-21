@@ -44,11 +44,12 @@ public class Client implements ActionListener, Runnable {
     private static Box vertical = Box.createVerticalBox(); // Vertical box to hold message panels
     private static JFrame f = new JFrame(); // Main application window
     private BufferedReader reader; // Reader for incoming messages
-    private BufferedWriter writer;
-    private String username;
-    private Socket socket;
-    private Point initialClick;
+    private BufferedWriter writer; // Wirter for outgoing messages
+    private String username; // Username for clients
+    private Socket socket; // Scoket for communication with the server
+    private Point initialClick; // Point to track mouse drag for window movement
 
+    // Logger for logging events and errors
     private static final Logger logger = Logger.getLogger(Client.class.getName());
 
     Client() {
