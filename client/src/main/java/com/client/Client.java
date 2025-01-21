@@ -33,13 +33,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+/**
+* The Client class represents a chat client that connects to a chat server.
+* It provides a graphical user interface for sending and receiving messages.
+*/
 public class Client implements ActionListener, Runnable {
 
-    private JTextField text;
-    private JPanel a1;
-    private static Box vertical = Box.createVerticalBox();
-    private static JFrame f = new JFrame();
-    private BufferedReader reader;
+    private JTextField text; // Text field for user input
+    private JPanel a1; // Panel to display message
+    private static Box vertical = Box.createVerticalBox(); // Vertical box to hold message panels
+    private static JFrame f = new JFrame(); // Main application window
+    private BufferedReader reader; // Reader for incoming messages
     private BufferedWriter writer;
     private String username;
     private Socket socket;
