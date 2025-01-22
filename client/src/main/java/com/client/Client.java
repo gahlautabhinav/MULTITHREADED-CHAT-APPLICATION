@@ -108,6 +108,7 @@ public class Client implements ActionListener, Runnable {
             }
         });
 
+        // Profile Photo
         ImageIcon i4 = new ImageIcon(getClass().getClassLoader().getResource("icons/pfp.png"));
         Image i5 = i4.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon(i5);
@@ -115,25 +116,30 @@ public class Client implements ActionListener, Runnable {
         profile.setBounds(40, 5, 60, 60);
         p1.add(profile);
 
+        // Group name label
         JLabel name = new JLabel("Group");
         name.setBounds(110, 15, 100, 18);
         name.setForeground(Color.WHITE);
         name.setFont(new Font("SAN_SERIF", Font.BOLD, 18));
         p1.add(name);
 
+        // Point to display messages
         a1 = new JPanel();
         a1.setBackground(Color.WHITE);
         a1.setLayout(new BoxLayout(a1, BoxLayout.Y_AXIS));
 
+        // Scroll pane for the message panel
         JScrollPane scrollPane = new JScrollPane(a1);
         scrollPane.setBounds(5, 75, 450, 570);
         f.add (scrollPane);
 
+        // Text field for user input
         text = new JTextField();
         text.setBounds(5, 655, 310, 40);
         text.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         f.add(text);
 
+        // Add key listener to send message on Enter key press
         text.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -143,6 +149,7 @@ public class Client implements ActionListener, Runnable {
             }
         });
 
+        // Send button
         JButton send = new JButton("Send");
         send.setBounds(320, 655, 123, 40);
         send.setBackground(new Color(7, 94, 84));
@@ -151,6 +158,7 @@ public class Client implements ActionListener, Runnable {
         send.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         f.add(send);
 
+        // Exit button
         JButton exit = new JButton(" Exit");
         exit.setBounds(5, 700, 123, 40);
         exit.setBackground(Color.RED);
@@ -159,42 +167,46 @@ public class Client implements ActionListener, Runnable {
         exit.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         f.add(exit);
 
+        // Frame settings
         f.setSize(450, 750);
         f.setLocation(20, 50);
         f.setUndecorated(true);
         f.getContentPane().setBackground(Color.WHITE);
 
+        // Mouse listener for dragging the window
         f.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 initialClick = e.getPoint();
             }
         });
 
+        // Mouse motion listener for dragging the window
         f.addMouseMotionListener(new MouseAdapter() {
             public void mouseDragged(MouseEvent e) {
                 int thisX = f.getLocation().x;
                 int thisY = f.getLocation().y;
                 int xMoved = e.getXOnScreen() - initialClick.x - thisX;
                 int yMoved = e.getYOnScreen() - initialClick.y - thisY;
-                f.setLocation(thisX + xMoved, thisY + yMoved);
+                f.setLocation(thisX + xMoved, thisY + yMoved); // Move the window
             }
         });
 
-        f.setVisible(true);
+        f.setVisible(true); // Make the frame visible
     }
 
+    // Mathod to connect to the chat server
     private void connectToServer() {
         try {
-            socket = new Socket("localhost", 2003);
-            writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            writer.write(username);
+            socket = new Socket("localhost", 2003); // Connect to server on localhost at port 2003
+            writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())); // Initialize writer
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream())); // Initialize reader
+            writer.write(username); // Send username to server
             writer.write("\r\n");
             writer.flush();
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error connecting to server", e);
             JOptionPane.showMessageDialog(f, "Could not connect to server.", "Error", JOptionPane.ERROR_MESSAGE);
-            System.exit(1);
+            System.exit(1); // Exit if connection fails
         }
     }
 
