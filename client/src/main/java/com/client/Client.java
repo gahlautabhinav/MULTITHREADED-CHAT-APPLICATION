@@ -210,28 +210,30 @@ public class Client implements ActionListener, Runnable {
         }
     }
 
+    // Action performed when the send button is clicked or Enter key is pressed
     public void actionPerformed(ActionEvent ae) {
         try {
-            String message = text.getText();
+            String message = text.getText(); // Get the message from the text field
             if (!message.trim().isEmpty()) {
-                sendMessage(message);
-                text.setText("");
+                sendMessage(message); // Send the message if it's not empty
+                text.setText(""); // Clear the text field
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error sending message", e);
         }
     }
 
+    // Method to send a message to the server
     public void sendMessage(String message) throws IOException {
         String encryptedMessage = encryptMessage(message); // Encrypt the message before sending
-        writer.write(encryptedMessage);
+        writer.write(encryptedMessage); // Write the encrypted message to the output stream
         writer.write("\r\n");
-        writer.flush();
+        writer.flush(); // Flush the writer to ensure the message is sent
     }
 
+    // Simple encryption method
     private String encryptMessage(String message) {
-        // Simple encryption (for demonstration purposes)
-        return new StringBuilder(message).reverse().toString();
+        return new StringBuilder(message).reverse().toString(); // Reverse the message as a form of "encryption"
     }
 
     public void displayMessage(String message) {
