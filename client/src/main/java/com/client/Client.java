@@ -34,9 +34,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
-* The Client class represents a chat client that connects to a chat server.
-* It provides a graphical user interface for sending and receiving messages.
-*/
+ * The Client class represents a chat client that connects to a chat server.
+ * It provides a graphical user interface for sending and receiving messages.
+ */
 public class Client implements ActionListener, Runnable {
 
     private JTextField text; // Text field for user input
@@ -53,9 +53,9 @@ public class Client implements ActionListener, Runnable {
     private static final Logger logger = Logger.getLogger(Client.class.getName());
 
     /**
-    * Constructs a new Client instance and initializes the user interface.
-    * Prompts the user for a username and connects to the chat server.
-    */
+     * Constructs a new Client instance and initializes the user interface.
+     * Prompts the user for a username and connects to the chat server.
+     */
     Client() {
         // Prompt user for username
         username = JOptionPane.showInputDialog("Enter your username: ");
@@ -73,22 +73,27 @@ public class Client implements ActionListener, Runnable {
     }
 
     /**
-    * Validates the username to ensure it contains only alphanumeric characters and underscores.
-    *
-    * @param username the username to validate
-    * @return true if the username is valid, false otherwise
-    */
+     * Validates the username to ensure it contains only alphanumeric characters and underscores.
+     *
+     * @param username the username to validate
+     * @return true if the username is valid, false otherwise
+     */
     private boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
     }
 
+    /**
+     * Sets up the user interface components for the chat client. 
+     */
     private void setupUI() {
+        // Panel for the header
         JPanel p1 = new JPanel();
         p1.setBackground(new Color(7, 94, 84));
         p1.setBounds(0, 0, 450, 70);
         p1.setLayout(null);
         f.add(p1);
 
+        // Back button
         ImageIcon i1 = new ImageIcon(getClass().getClassLoader().getResource("icons/3.png"));
         Image i2 = i1.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -96,9 +101,10 @@ public class Client implements ActionListener, Runnable {
         back.setBounds(5, 20, 25, 25);
         p1.add(back);
 
+        // Add mouse listener to the back button for closing the application
         back.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
-                exitApplication(); // Close gracefully on exit button click
+                exitApplication();
             }
         });
 
