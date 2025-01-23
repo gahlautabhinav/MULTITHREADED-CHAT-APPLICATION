@@ -191,15 +191,15 @@ public class Client implements ActionListener, Runnable {
             }
         });
 
-        f.setVisible(true); // Make the frame visible
+        f.setVisible(true);
     }
 
     // Mathod to connect to the chat server
     private void connectToServer() {
         try {
             socket = new Socket("localhost", 2003); // Connect to server on localhost at port 2003
-            writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())); // Initialize writer
-            reader = new BufferedReader(new InputStreamReader(socket.getInputStream())); // Initialize reader
+            writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer.write(username); // Send username to server
             writer.write("\r\n");
             writer.flush();
@@ -213,10 +213,10 @@ public class Client implements ActionListener, Runnable {
     // Action performed when the send button is clicked or Enter key is pressed
     public void actionPerformed(ActionEvent ae) {
         try {
-            String message = text.getText(); // Get the message from the text field
+            String message = text.getText();
             if (!message.trim().isEmpty()) {
-                sendMessage(message); // Send the message if it's not empty
-                text.setText(""); // Clear the text field
+                sendMessage(message);
+                text.setText("");
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error sending message", e);
@@ -225,10 +225,10 @@ public class Client implements ActionListener, Runnable {
 
     // Method to send a message to the server
     public void sendMessage(String message) throws IOException {
-        String encryptedMessage = encryptMessage(message); // Encrypt the message before sending
-        writer.write(encryptedMessage); // Write the encrypted message to the output stream
+        String encryptedMessage = encryptMessage(message);
+        writer.write(encryptedMessage); 
         writer.write("\r\n");
-        writer.flush(); // Flush the writer to ensure the message is sent
+        writer.flush();
     }
 
     // Simple encryption method
@@ -236,6 +236,7 @@ public class Client implements ActionListener, Runnable {
         return new StringBuilder(message).reverse().toString(); // Reverse the message as a form of "encryption"
     }
 
+    // Method to display a message in the chat window
     public void displayMessage(String message) {
         JPanel p2 = formatLabel(message);
         vertical.add(p2);
@@ -245,6 +246,7 @@ public class Client implements ActionListener, Runnable {
         a1.repaint();
     }
 
+    // Method to format message into panel
     public JPanel formatLabel(String message) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -258,9 +260,10 @@ public class Client implements ActionListener, Runnable {
 
         panel.add(messageLabel);
         panel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        return panel;
+        return panel; // Return the formatted panel
     }
 
+    // Method to run the client and listen for incoming messages
     public void run() {
         String msg;
         try {
