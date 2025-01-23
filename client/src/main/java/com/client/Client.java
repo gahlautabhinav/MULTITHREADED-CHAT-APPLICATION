@@ -269,7 +269,7 @@ public class Client implements ActionListener, Runnable {
         try {
             while ((msg = reader.readLine()) != null) {
                 if (!msg.startsWith("USERLIST:")) {
-                    displayMessage(msg);
+                    displayMessage(msg); // Display regular messgaes
                 } else {
                     updateActiveUsers(msg); // Update the list of active users
                 }
@@ -277,12 +277,13 @@ public class Client implements ActionListener, Runnable {
         } catch (SocketException e) {
             logger.log(Level.WARNING, "Connection to server lost: " + e.getMessage());
             JOptionPane.showMessageDialog(f, "Connection to server lost. Please try reconnecting.", "Connection Error", JOptionPane.ERROR_MESSAGE);
-            exitApplication();
+            exitApplication(); // Exit if connection is lost
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error reading message", e);
         }
     }
 
+    // Method to update the list of active users
     private void updateActiveUsers(String msg) {
         String userList = msg.substring("USERLIST:".length());
         String[] users = userList.split(", ");
@@ -297,16 +298,17 @@ public class Client implements ActionListener, Runnable {
         displayMessage(userListDisplay.toString());
     }
 
+    // Method to exit the application gracefully
     private void exitApplication() {
         try {
             if (writer != null) {
-                writer.close();
+                writer.close(); // Close the writer
             }
             if (reader != null) {
-                reader.close();
+                reader.close(); // Close the reader
             }
             if (socket != null) {
-                socket.close();
+                socket.close(); // Close the socket
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error closing resources ", e);
@@ -314,9 +316,10 @@ public class Client implements ActionListener, Runnable {
         System.exit(0); // Exit the application
     }
 
+    // Main method to start the client application
     public static void main(String[] args) {
         Client client = new Client();
-        Thread thread = new Thread(client);
-        thread.start();
+        Thread thread = new Thread(client); // Create a thread for client to run
+        thread.start(); // Start the thread
     }
 }
