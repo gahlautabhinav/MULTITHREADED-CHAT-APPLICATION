@@ -191,9 +191,9 @@ public class Server implements Runnable {
             serverSocket.setSoTimeout(5000); // Set timeout for accepting connections
             while (true) {
                 try {
-                    Socket socket = serverSocket.accept();
-                    Server server = new Server(socket);
-                    executorService.execute(server); // Use thread pool to handle client
+                    Socket socket = serverSocket.accept(); // Accept a new client connection
+                    Server server = new Server(socket); // Create a new server instance for the client
+                    executorService.execute(server);
                 } catch (SocketTimeoutException e) {
                     System.out.println("Waiting for client connection...");
                 }
