@@ -76,20 +76,40 @@ public class Server implements Runnable {
         }
     }
 
+    /**
+     * Validates the username to ensure it is not null, empty, and contains only valid characters.
+     *
+     * @param username the username to validate
+     * @return true if the username is valid, false otherwise
+     */
     private boolean isValidUsername(String username) {
         return username != null && !username.trim().isEmpty() && username.matches("[a-zA-Z0-9_]+");
     }
 
+    /**
+     * Encrypts a message using a simple encryption method (for demonstration purposes).
+     *
+     * @param message the message to encrypt
+     * @return the encrypted message
+     */
     private String encryptMessage(String message) {
         // Simple encryption (for demonstration purposes)
-        return new StringBuilder(message).reverse().toString();
+        return new StringBuilder(message).reverse().toString(); // Reverse the message as a form of "encryption"
     }
 
+    /**
+     * Broadcasts a message to all connected clients.
+     *
+     * @param message the message to broadcast
+     */
     private String decryptMessage(String message) {
         // Simple decryption (for demonstration purposes)
-        return new StringBuilder(message).reverse().toString();
+        return new StringBuilder(message).reverse().toString(); // Reverse the message back to original
     }
 
+    /**
+     * Broadcasts the list of active users to all connected clients.
+     */
     private void broadcastMessage(String message) {
         for (BufferedWriter bw : clients) {
             try {
