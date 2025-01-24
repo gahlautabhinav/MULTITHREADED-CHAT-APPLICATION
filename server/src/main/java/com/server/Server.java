@@ -98,9 +98,10 @@ public class Server implements Runnable {
     }
 
     /**
-     * Broadcasts a message to all connected clients.
+     * Decrypts a message using a simple decryption method (for demonstration purposes).
      *
-     * @param message the message to broadcast
+     * @param message the message to decrypt
+     * @return the decrypted message
      */
     private String decryptMessage(String message) {
         // Simple decryption (for demonstration purposes)
@@ -108,7 +109,9 @@ public class Server implements Runnable {
     }
 
     /**
-     * Broadcasts the list of active users to all connected clients.
+     * Broadcasts a message to all connected clients.
+     *
+     * @param message the message to broadcast
      */
     private void broadcastMessage(String message) {
         for (BufferedWriter bw : clients) {
@@ -118,11 +121,14 @@ public class Server implements Runnable {
                 bw.flush();
             } catch (IOException e) {
                 logger.log(Level.WARNING, "Error sending message to client", e);
-                clients.remove(bw);
+                clients.remove(bw);  // Remove client if an error occurs
             }
         }
     }
 
+    /**
+     * Broadcasts the list of active users to all connected clients.
+     */
     private void broadcastUser_List() {
         String userList = String.join(", ", activeUsers);
         String userListMessage = "USERLIST:" + userList;
@@ -133,11 +139,14 @@ public class Server implements Runnable {
                 bw.flush();
             } catch (IOException e) {
                 logger.log(Level.WARNING, "Error sending user list to client", e);
-                clients.remove(bw);
+                clients.remove(bw); // Remove client if an error occurs
             }
         }
     }
 
+    /**
+     * Cleans up resources when a client disconnects.
+     */
     private void cleanup() {
         try {
             if (writer != null) {
