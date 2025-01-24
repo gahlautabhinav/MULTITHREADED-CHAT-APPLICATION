@@ -18,6 +18,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * The Server class represents a multi-threaded chat server that handles client connections.
+ * It allows clients to send and receive messages and maintains a list of active users.
+ */
 public class Server implements Runnable {
     private Socket socket;
     private static final List<BufferedWriter> clients = new CopyOnWriteArrayList<>();
@@ -26,10 +30,19 @@ public class Server implements Runnable {
     private BufferedWriter writer;
     private String username;
 
+    /**
+     * Constructs a new Server instance with the specified socket.
+     *
+     * @param socket the socket for the client connection
+     */
     public Server(Socket socket) {
         this.socket = socket;
     }
 
+    /**
+     * Runs the server thread to handle client communication.
+     * Reads messages from the client and broadcasts them to all connected clients.
+     */
     public void run() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
             writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -45,7 +58,7 @@ public class Server implements Runnable {
             }
 
             clients.add(writer);
-            activeUsers.add(username);
+            activeUsers.add(username); 
             broadcastUser_List();
 
             String data;
@@ -59,7 +72,7 @@ public class Server implements Runnable {
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error in communication", e);
         } finally {
-            cleanup();
+            cleanup(); // Clean up resources on exit
         }
     }
 
