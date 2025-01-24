@@ -154,31 +154,41 @@ public class Server implements Runnable {
                 activeUsers.remove(username);
                 broadcastUser_List();
             }
-            socket.close();
+            socket.close(); // Close the socket
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error closing socket", e);
         }
     }
 
+    /**
+     * Gets the current time formatted as HH:mm:ss.
+     *
+     * @return the current time as a string
+     */
     private String getCurrentTime() {
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss");
         return sdf.format(new java.util.Date());
     }
 
+    /**
+     * The main method to start the chat server.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         // Setup logging to a file
         try {
             FileHandler fileHandler = new FileHandler("server.log", true);
             fileHandler.setFormatter(new SimpleFormatter());
-            logger.addHandler(fileHandler); // Corrected line
-            logger.setLevel(Level.ALL); // Corrected line
+            logger.addHandler(fileHandler); // Add file handler to logger
+            logger.setLevel(Level.ALL); // Set logger level to ALL
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error setting up file logging", e);
         }
     
         ExecutorService executorService = Executors.newFixedThreadPool(10); // Thread pool for managing client connections
         try (ServerSocket serverSocket = new ServerSocket(2003)) {
-            serverSocket.setSoTimeout(5000);
+            serverSocket.setSoTimeout(5000); // Set timeout for accepting connections
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();
