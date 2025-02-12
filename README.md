@@ -1,7 +1,5 @@
 # MULTITHREADED-CHAT-APPLICATION
 
-**DOMAIN**: JAVA PROGRAMMING
-
 # **GROUP CHAT: Multithreaded Chat Application**
 
 This multithreaded chat application, built using Java sockets, enables real-time communication between multiple clients and a server. The server handles concurrent client connections, broadcasting messages and managing user sessions. With a user-friendly GUI, clients can send and receive messages seamlessly. This project demonstrates the implementation of client-server architecture, socket programming, and multithreading in Java.
